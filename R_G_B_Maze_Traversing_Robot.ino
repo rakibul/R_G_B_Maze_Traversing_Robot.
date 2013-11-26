@@ -64,10 +64,39 @@ void turnLeft(int mPin1, int mPin2, int mPin3, int mPin4){
  * @param int mPin4
  * @return void
  */
+
+void turnLeftBack(int mPin1, int mPin2, int mPin3, int mPin4){
+    stop(mPin3, mPin4);
+    analogWrite(mPin2, Speed);
+    analogWrite(mPin1, 0);
+}
+
+/**
+ * 
+ * @param int mPin1
+ * @param int mPin2
+ * @param int mPin3
+ * @param int mPin4
+ * @return void
+ */
 void turnRight(int mPin1, int mPin2, int mPin3, int mPin4){
     stop(mPin3, mPin4);
     analogWrite(mPin1, Speed);
     analogWrite(mPin2, 0);
+}
+
+/**
+ * 
+ * @param int mPin1
+ * @param int mPin2
+ * @param int mPin3
+ * @param int mPin4
+ * @return void
+ */
+void turnRightBack(int mPin1, int mPin2, int mPin3, int mPin4){
+    stop(mPin3, mPin4);
+    analogWrite(mPin2, Speed);
+    analogWrite(mPin1, 0);
 }
 
 /**
@@ -146,6 +175,12 @@ void loop(){
            case 'l':
              turnLeft(M1Pin_1, M1Pin_2, M2Pin_1, M2Pin_2);
              break; 
+           case 'c':
+             turnRightBack(M2Pin_1, M2Pin_2, M1Pin_1, M1Pin_2);
+             break;
+           case 'z':
+             turnLeftBack(M1Pin_1, M1Pin_2, M2Pin_1, M2Pin_2);
+             break;
         }
     }
 }
