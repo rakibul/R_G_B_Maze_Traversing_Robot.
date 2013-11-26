@@ -8,6 +8,10 @@
  *  speed (using P.W.M.). Drive our robot from Arduino Serial Terminal.
  */
  
+static int Speed = 255;       //Highest running speed
+const int reverseSpeed = 127; //Highest running speed when car on reverse gear
+const int turnSpeed = 63;     //Highest turning speed
+
 int M1Pin_1 = 3; //PWM pin 3
 int M1Pin_2 = 5; //PWM pin 5
 
@@ -15,8 +19,6 @@ int M2Pin_1 = 6; //PWM pin 6
 int M2Pin_2 = 9; //PWM pin 9
 
 byte input;      //variable for keyboard input
-
-static int Speed = 200; //Robot Speed variable
 
 /**
  * 
@@ -52,7 +54,7 @@ void decreaseSpeed(){
 
 void turnLeft(int mPin1, int mPin2, int mPin3, int mPin4){
     stop(mPin3, mPin4);
-    analogWrite(mPin1, Speed);
+    analogWrite(mPin1, turnSpeed);
     analogWrite(mPin2, 0);
 }
 
@@ -67,7 +69,7 @@ void turnLeft(int mPin1, int mPin2, int mPin3, int mPin4){
 
 void turnLeftBack(int mPin1, int mPin2, int mPin3, int mPin4){
     stop(mPin3, mPin4);
-    analogWrite(mPin2, Speed);
+    analogWrite(mPin2, turnSpeed);
     analogWrite(mPin1, 0);
 }
 
@@ -81,7 +83,7 @@ void turnLeftBack(int mPin1, int mPin2, int mPin3, int mPin4){
  */
 void turnRight(int mPin1, int mPin2, int mPin3, int mPin4){
     stop(mPin3, mPin4);
-    analogWrite(mPin1, Speed);
+    analogWrite(mPin1, turnSpeed);
     analogWrite(mPin2, 0);
 }
 
@@ -95,7 +97,7 @@ void turnRight(int mPin1, int mPin2, int mPin3, int mPin4){
  */
 void turnRightBack(int mPin1, int mPin2, int mPin3, int mPin4){
     stop(mPin3, mPin4);
-    analogWrite(mPin2, Speed);
+    analogWrite(mPin2, turnSpeed);
     analogWrite(mPin1, 0);
 }
 
@@ -128,7 +130,7 @@ void forward(int mPin1, int mPin2){
  * @return void
  */
 void reverse(int mPin1, int mPin2){
-    analogWrite(mPin2, Speed);
+    analogWrite(mPin2, reverseSpeed);
     analogWrite(mPin1, 0);
 }
 
